@@ -193,7 +193,7 @@ loadPartial('topbanner');
             </div>
           </div>
         </div>
-        <a href="listings.html" class="block text-xl text-center">
+        <a href="/listings" class="block text-xl text-center">
           <i class="fa fa-arrow-alt-circle-right"></i>
           Show All Jobs
         </a>
@@ -203,3 +203,4 @@ loadPartial('topbanner');
 
 loadPartial('bottombanner');
 loadPartial('footer');
+
