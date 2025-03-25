@@ -1,3 +1,3 @@
 <?php
 
-echo 'oiiii';
+loadView('listings/index');

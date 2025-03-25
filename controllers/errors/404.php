@@ -1,3 +1,3 @@
 <?php
 
-echo 'ESSA PÁGINAA NÃO EXISTE!!!!!';
+loadView('404');

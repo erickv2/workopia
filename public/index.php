@@ -5,7 +5,7 @@ require '../helpers.php';
 $routes = [
     '/' => 'controllers/home.php',
     '/listings' => 'controllers/listings/index.php',
-    '/lstings/create' => 'controllers/listings/create.php',
+    '/listings/create' => 'controllers/listings/create.php',
     '404' => 'controllers/errors/404.php'
 ];
 
