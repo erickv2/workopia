@@ -21,7 +21,7 @@ class Router {
 
      public function error($httpCode = 404) {
         http_response_code($httpCode);
-        loadView($httpCode);
+        loadView("/errors/$httpCode");
         exit;
      }
 
