@@ -22,7 +22,7 @@
 
    if(file_exists($viewPath)) {
       extract($data);
-      
+
       require $viewPath;
    } else {
       echo "View '{$name}' not found!";
@@ -64,3 +64,13 @@
       echo '<pre>';
    }
 
+  /**
+   * format salary
+   * 
+   * @param string $salary
+   * @return string Formatted Salary
+   */
+
+   function formatSalary($salary) {
+      return '$' . number_format(floatval($salary));
+   }
