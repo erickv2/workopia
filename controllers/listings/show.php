@@ -3,6 +3,8 @@
 $config = require basePath('config/db.php');
 $db = new Database($config);
 
+// inspectAndDie($_GET);
+
 $id = $_GET['id'] ?? '';
 
 $params = [
@@ -11,6 +13,6 @@ $params = [
 
 $listing = $db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
 
-inspect($listing);
-
-loadView('listings/show');
+loadView('listings/show', [
+    'listing' => $listing
+]);
