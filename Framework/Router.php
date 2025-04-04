@@ -2,6 +2,8 @@
 
 namespace Framework;
 
+use App\Controllers\ErrorController;
+
 class Router {
     protected $routes = [];
 
@@ -34,12 +36,6 @@ class Router {
      * 
      * @return void
      */
-
-     public function error($httpCode = 404) {
-        http_response_code($httpCode);
-        loadView("/errors/$httpCode");
-        exit;
-     }
 
     /**
      * add a GET route
@@ -115,6 +111,7 @@ class Router {
             }
         }
 
-        $this->error();
+        ErrorController::notFound();
+
     }
 }
