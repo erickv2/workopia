@@ -1,0 +1,16 @@
+{
+    "name": "erickv2/workopia",
+    "description": "Job listing app",
+    "authors": [
+        {
+        "name": "Erick",
+        "email": "erickestanislau@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "Framework/",
+            "App\\": "App/"
+        }
+    }
+}
