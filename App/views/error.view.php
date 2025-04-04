@@ -12,10 +12,9 @@ loadPartial('topbanner');
          <p class="text-center text-2xl mb-4">
            <?= $message ?>
          </p>
+         <a class="block text-center" href="/listings">Go back to Listings</a>
       </div>
       </section>
-    </body>
-</html>
 
 <?php
 
