@@ -107,8 +107,6 @@ class Router {
 
             $routeSegments = explode('/', trim($route['uri'], '/'));
 
-            $match = true;
-
             // check if the number of segments matches
 
             if(count($uriSegments) === count($routeSegments) && strtoupper($route['method'] === $requestMethod)) {
