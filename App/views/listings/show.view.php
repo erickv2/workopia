@@ -36,10 +36,11 @@ loadPartial('topbanner');
                 >Local</span
               >
             </li>
-            <li class="mb-2">
-              <strong>Tags:</strong> <span><?= $listing['city'] ?>, <?= $listing['state'] ?></span>,
-              <span>Coding</span>
-            </li>
+            <?php if(!empty($listing['tags'])) : ?>
+      <li class="mb-2">
+        <strong>Tags:</strong> <?= $listing['tags'] ?>
+      </li>
+      <?php endif; ?>
           </ul>
         </div>
       </div>
