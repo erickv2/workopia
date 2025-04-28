@@ -25,6 +25,7 @@ loadPartial('navbar');
               name="name"
               placeholder="Full Name"
               class="w-full px-4 py-2 border rounded focus:outline-none"
+              value="<?= $user['name'] ?? '' ?>"
             />
           </div>
           <div class="mb-4">
@@ -33,6 +34,7 @@ loadPartial('navbar');
               name="email"
               placeholder="Email Address"
               class="w-full px-4 py-2 border rounded focus:outline-none"
+              value="<?= $user['email'] ?? '' ?>"
             />
           </div>
            <div class="mb-4">
@@ -41,6 +43,7 @@ loadPartial('navbar');
               name="city"
               placeholder="City"
               class="w-full px-4 py-2 border rounded focus:outline-none"
+              value="<?= $user['city'] ?? '' ?>"
             />
           </div>
            <div class="mb-4">
@@ -49,6 +52,7 @@ loadPartial('navbar');
               name="state"
               placeholder="State"
               class="w-full px-4 py-2 border rounded focus:outline-none"
+              value="<?= $user['state'] ?? '' ?>"
             />
           </div>
           <div class="mb-4">
@@ -57,6 +61,7 @@ loadPartial('navbar');
               name="password"
               placeholder="Password"
               class="w-full px-4 py-2 border rounded focus:outline-none"
+              value="<?= $user['password'] ?? '' ?>"
             />
           </div>
           <div class="mb-4">
@@ -65,6 +70,7 @@ loadPartial('navbar');
               name="password_confirmation"
               placeholder="Confirm Password"
               class="w-full px-4 py-2 border rounded focus:outline-none"
+              value="<?= $user['password_confirmation'] ?? '' ?>"
             />
           </div>
           <button

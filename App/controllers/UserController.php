@@ -58,7 +58,7 @@ class UserController {
         }
 
         if(!Validation::string($password, 6)) {
-            $errors['password'] = 'Name must be at least 6 characters';
+            $errors['password'] = 'Password must be at least 6 characters';
         }
         
         if(!Validation::match($password, $passwordConfirmation)) {
@@ -77,8 +77,23 @@ class UserController {
             ]);
 
             exit;
-        } else {
-            \inspectAndDie('store');
+        }
+
+        // check if email exists
+
+        $params = [
+            'email' => $email
+        ];
+
+        $user = $this->db->query('SELECT * FROM users WHERE email = :email', $params);
+
+        if($user) {
+            $errors['email'] = 'Tha email already exists';
+            loadView('users/create', [
+                'errors' => $errors
+            ]);
+
+            exit;
         }
       }
 
