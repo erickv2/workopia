@@ -41,7 +41,7 @@ class Validation {
      * match a value against another
      * 
      * @param string $value
-     * @param sstring $value2
+     * @param string $value2
      * 
      * @return bool
      */
