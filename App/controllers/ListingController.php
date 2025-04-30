@@ -134,10 +134,18 @@ class ListingController {
         ];
 
         $listing = $this->db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
+        
+        // check if listing exists
 
         if(!$listing) {
             ErrorController::notFound('Listing not found');
             return;
+        }
+
+        // authorization
+        if(Session::get('user')['id'] !== $listing['user_id']) {
+            $_SESSION['error_message'] = 'You are not authorized to delete this listing';
+            return redirect('/listings/' . $listing['id']);
         }
 
         $this->db->query('DELETE FROM listings WHERE id = :id', $params);
