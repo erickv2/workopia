@@ -4,6 +4,7 @@ loadPartial('head');
 loadPartial('navbar');
 loadPartial('topbanner');
 
+
 ?>
 
 <section class="container mx-auto p-4 mt-4">
@@ -14,6 +15,7 @@ loadPartial('topbanner');
         <i class="fa fa-arrow-alt-circle-left"></i>
         Back To Listings
       </a>
+      <?php if(Framework\Authorization::isOwner($listing['user_id'])) : ?>
       <div class="flex space-x-4 ml-4">
         <a href="/listings/edit/<?= $listing['id'] ?>" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
         <!-- Delete Form -->
@@ -23,6 +25,7 @@ loadPartial('topbanner');
         </form>
         <!-- End Delete Form -->
       </div>
+      <?php endif; ?>
     </div>
         <div class="p-4">
           <h2 class="text-xl font-semibold"><?= $listing['title'] ?></h2>
