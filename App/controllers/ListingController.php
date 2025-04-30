@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Framework\Database;
 use Framework\Validation;
+use Framework\Session;
 
 
 
@@ -20,7 +21,7 @@ class ListingController {
 
             // inspectAndDie(Validation::match('test', 'test'));
         
-            $listings = $this->db->query('SELECT * FROM listings')->fetchAll();
+            $listings = $this->db->query('SELECT * FROM listings ORDER BY created_at DESC')->fetchAll();
 
             loadView('listings/index', [
             'listings' => $listings
@@ -64,7 +65,7 @@ class ListingController {
 
         $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
 
-        $newListingData['user_id'] = 1;
+        $newListingData['user_id'] = Session::get('user')['id'];
 
         $newListingData = array_map('sanitize', $newListingData);
 
