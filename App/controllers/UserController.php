@@ -113,6 +113,7 @@ class UserController {
 
         $userId = $this->db->conn->lastInsertId();
 
+        // set user session
         Session::set('user', [
             'id' => $userId,
             'name' => $name,
@@ -149,16 +150,57 @@ class UserController {
         if (!Validation::email($email)) {
             $errors['email'] ='Please enter a valid email';
         }
-        if (!Validation::string($password)) {
+        if (!Validation::string($password, 6, 50)) {
             $errors['password'] ='Password must be at least 6 characters';
         }
 
+        //check for errors
+
         if(!empty($errors)) {
-            loadView('user/login', [
+            loadView('users/login', [
                 'errors' => $errors
             ]);
 
             exit;
         }
+
+        //check for email
+
+        $params = [
+            'email' => $email
+        ];
+
+        $user = $this->db->query('SELECT * FROM users WHERE email = :email', $params)->fetch();
+
+        if(!$user) {
+            $errors['email'] = 'Incorrect credentials';
+            
+            loadView('users/login', [
+                'errors' => $errors
+            ]);
+        }
+
+        // check if password is correct
+
+        if(!password_verify($password, $user['password'])) {
+            $errors['email'] = 'Incorrect credentials';
+            
+            loadView('users/login', [
+                'errors' => $errors
+            ]);
+            exit;
+        }
+
+        // set user session
+
+        Session::set('user', [
+            'id' => $user['id'],
+            'name' => $user['name'],
+            'email' => $user['email'],
+            'city' => $user['city'],
+            'state' => $user['state']
+        ]);
+
+        redirect('/');
       }
 }
