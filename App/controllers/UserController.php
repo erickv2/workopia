@@ -136,4 +136,29 @@ class UserController {
         redirect('/');
       }
 
+      // autheticate a user with email and password
+
+      public function authenticate() {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+         
+        $errors = [];
+
+        // validation
+
+        if (!Validation::email($email)) {
+            $errors['email'] ='Please enter a valid email';
+        }
+        if (!Validation::string($password)) {
+            $errors['password'] ='Password must be at least 6 characters';
+        }
+
+        if(!empty($errors)) {
+            loadView('user/login', [
+                'errors' => $errors
+            ]);
+
+            exit;
+        }
+      }
 }
